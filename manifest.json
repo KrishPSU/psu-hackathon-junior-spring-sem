@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Feed Filter",
+  "version": "0.1.0",
+  "description": "User-controlled feed filtering via Groq",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://www.reddit.com/*",
+    "https://api.groq.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.reddit.com/*"
+      ],
+      "js": ["classifier.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Feed Filter"
+  }
+}
